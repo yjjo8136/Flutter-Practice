@@ -1,41 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:todoapp/pages/home_page.dart';
 
-void main() => runApp(MyApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey:
+          "AAAAadUn6Ng:APA91bHaYDfNlNYnZRVpvNSwJpKLN4B1xexrlvZ9FpqBWMIznyYxHR3DzPrv789K_l0e_Z9Xik3EUvgMSqQnl_tdjIlYafVLvQe5D4FSvehIQ3TxO5jsi3TgekBikqwBBgLcoB9SaUZM", // Your apiKey
+      appId: "1:454547728600:android:1fbf21bbd08f1c615dcfad", // Your appId
+      messagingSenderId: "454547728600", // Your messagingSenderId
+      projectId: "todo-app-b698f", // Your projectId
+    ),
+  );
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
