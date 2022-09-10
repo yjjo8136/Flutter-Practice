@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/pages/detail_page.dart';
 
 class CustomTodo extends StatelessWidget {
+  final String title;
+  final String content;
+  final DateTime uploadDate;
+
+  const CustomTodo(
+      {required this.title, required this.content, required this.uploadDate});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,19 +31,19 @@ class CustomTodo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Title",
+                  title,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 5),
-                Text("Context"),
+                Text(content),
                 SizedBox(height: 5),
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    "2022-09-04",
+                    '$uploadDate',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w300,

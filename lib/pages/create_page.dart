@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todoapp/classes/todo.dart';
+import 'package:todoapp/methods/crud_methods.dart';
 
 class CreatePage extends StatelessWidget {
   final controllerTitle = TextEditingController();
@@ -42,33 +44,4 @@ class CreatePage extends StatelessWidget {
       ),
     );
   }
-
-  Future createTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todos').doc();
-    todo.id = docTodo.id;
-
-    final json = todo.toJson();
-    await docTodo.set(json);
-  }
-}
-
-class Todo {
-  String id;
-  final String title;
-  final String content;
-  final DateTime uploadDate;
-
-  Todo({
-    this.id = '',
-    required this.title,
-    required this.content,
-    required this.uploadDate,
-  });
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'content': content,
-        'uploadDate': uploadDate,
-      };
 }
