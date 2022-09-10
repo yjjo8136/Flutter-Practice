@@ -42,6 +42,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildTodo(Todo todo) => CustomTodo(
+        id: todo.id,
         title: todo.title,
         content: todo.content,
         uploadDate: todo.uploadDate,

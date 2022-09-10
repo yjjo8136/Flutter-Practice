@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/pages/detail_page.dart';
 
 class CustomTodo extends StatelessWidget {
+  final String id;
   final String title;
   final String content;
   final DateTime uploadDate;
 
   const CustomTodo(
-      {required this.title, required this.content, required this.uploadDate});
+      {required this.id,
+      required this.title,
+      required this.content,
+      required this.uploadDate});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class CustomTodo extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailPage()),
+            MaterialPageRoute(builder: (context) => DetailPage(id: id)),
           );
         },
         child: Container(
